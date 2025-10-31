@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QPushButton,
                                QLabel, QLineEdit, QComboBox, QMessageBox)
 from PySide6.QtCore import Qt
 
-from ..database.models import Component
+from database.models import Component
 
 
 class ComponentManagerWidget(QWidget):

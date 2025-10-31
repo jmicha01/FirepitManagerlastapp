@@ -51,7 +51,7 @@ class Design(Base):
     name = Column(String, nullable=False)
     description = Column(Text)
     layout_json = Column(Text, nullable=False)  # JSON string of layout configuration
-    metadata_json = Column(Text)  # Additional metadata
+    design_metadata_json = Column(Text)  # Additional metadata
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
@@ -68,12 +68,12 @@ class Design(Base):
         self.layout_json = json.dumps(value)
     
     @property
-    def design_metadata(self):
-        return json.loads(self.metadata_json) if self.metadata_json else {}
+    def metadata(self):
+        return json.loads(self.design_metadata_json) if self.design_metadata_json else {}
     
-    @design_metadata.setter
-    def design_metadata(self, value):
-        self.metadata_json = json.dumps(value)
+    @metadata.setter
+    def metadata(self, value):
+        self.design_metadata_json = json.dumps(value)
 
 
 class DesignComponent(Base):
@@ -168,12 +168,12 @@ class Milestone(Base):
     start_date = Column(DateTime)
     end_date = Column(DateTime)
     status = Column(String, default='not_started')  # not_started, in_progress, completed
-    metadata_json = Column(Text)
+    design_metadata_json = Column(Text)
     
     @property
-    def design_metadata(self):
-        return json.loads(self.metadata_json) if self.metadata_json else {}
+    def metadata(self):
+        return json.loads(self.design_metadata_json) if self.design_metadata_json else {}
     
-    @design_metadata.setter
-    def design_metadata(self, value):
-        self.metadata_json = json.dumps(value)
+    @metadata.setter
+    def metadata(self, value):
+        self.design_metadata_json = json.dumps(value)

@@ -68,11 +68,11 @@ class Design(Base):
         self.layout_json = json.dumps(value)
     
     @property
-    def design_metadata(self):
+    def metadata(self):
         return json.loads(self.metadata_json) if self.metadata_json else {}
     
-    @design_metadata.setter
-    def design_metadata(self, value):
+    @metadata.setter
+    def metadata(self, value):
         self.metadata_json = json.dumps(value)
 
 
@@ -171,9 +171,9 @@ class Milestone(Base):
     metadata_json = Column(Text)
     
     @property
-    def design_metadata(self):
+    def metadata(self):
         return json.loads(self.metadata_json) if self.metadata_json else {}
     
-    @design_metadata.setter
-    def design_metadata(self, value):
+    @metadata.setter
+    def metadata(self, value):
         self.metadata_json = json.dumps(value)
