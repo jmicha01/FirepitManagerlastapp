@@ -1,0 +1,3 @@
+@echo off
+echo Opening GitHub repository...
+start https://github.com/jmicha01/FirepitManagerlastapp
